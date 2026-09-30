@@ -9,10 +9,19 @@ layout: default
 
   {{ content }}
 
-  {%- if site.posts.size > 0 -%}
+  {%- comment -%}
+    使用 paginator.posts（需要 jekyll-paginate 插件）
+    如果分页不可用，则回退到 site.posts
+  {%- endcomment -%}
+  {%- assign posts_to_show = paginator.posts -%}
+  {%- if posts_to_show == null or posts_to_show.size == 0 -%}
+    {%- assign posts_to_show = site.posts -%}
+  {%- endif -%}
+
+  {%- if posts_to_show.size > 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: "最新文章" }}</h2>
     <ul class="post-list">
-      {%- for post in paginator.posts -%}
+      {%- for post in posts_to_show -%}
       <li>
         <h3>
           <a class="post-link" href="{{ post.url | relative_url }}">
@@ -27,7 +36,7 @@ layout: default
       {%- endfor -%}
     </ul>
 
-    {%- if paginator.total_pages > 1 -%}
+    {%- if paginator and paginator.total_pages > 1 -%}
     <div class="pagination">
       {%- if paginator.previous_page -%}
         <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; 上一页</a>
