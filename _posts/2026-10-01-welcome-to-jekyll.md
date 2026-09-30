@@ -1,6 +1,6 @@
 ---
 title: "欢迎来到 Sophia Yanghua头脑风暴"
-date: 2026-10-01 10:00:00 +0800
+date: 2026-09-30 08:00:00 +0800
 categories: [技术]
 tags: [Jekyll, GitHub Pages, 博客搭建]
 excerpt: "第一篇博客文章，聊聊为什么我要搭建这个技术博客，以及用 Jekyll + GitHub Pages 搭博客的踩坑记录。"
