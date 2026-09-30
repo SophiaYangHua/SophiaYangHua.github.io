@@ -1,0 +1,47 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+    <h2 class="post-list-heading">{{ page.list_title | default: "最新文章" }}</h2>
+    <ul class="post-list">
+      {%- for post in paginator.posts -%}
+      <li>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        <span class="post-meta">{{ post.date | date: "%Y年%m月%d日" }}</span>
+        {%- if post.excerpt -%}
+          <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 150 }}</p>
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+
+    {%- if paginator.total_pages > 1 -%}
+    <div class="pagination">
+      {%- if paginator.previous_page -%}
+        <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; 上一页</a>
+      {%- endif -%}
+
+      <span class="page-number">
+        第 {{ paginator.page }} 页 / 共 {{ paginator.total_pages }} 页
+      </span>
+
+      {%- if paginator.next_page -%}
+        <a href="{{ paginator.next_page_path | relative_url }}">下一页 &raquo;</a>
+      {%- endif -%}
+    </div>
+    {%- endif -%}
+
+  {%- endif -%}
+</div>

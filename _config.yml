@@ -1,0 +1,43 @@
+# Site settings
+title: "Sophia Yanghua头脑风暴"
+description: "记录技术学习、踩坑与思考"
+url: ""
+baseurl: ""
+
+# Theme
+theme: minima
+
+minima:
+  social_links:
+    - { platform: github, user_url: "https://github.com/SophiaYangHua" }
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# Pagination
+paginate: 5
+paginate_path: "/page:num/"
+
+# Language
+language: "zh-CN"
+
+# Author
+author:
+  name: "Sophia Yanghua"
+  email: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - README.md

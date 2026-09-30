@@ -1,0 +1,66 @@
+---
+layout: default
+---
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {%- assign date_format = site.minima.date_format | default: "%Y年%m月%d日" -%}
+        {{ page.date | date: date_format }}
+      </time>
+      {%- if page.author -%}
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+      {%- endif -%}
+    </p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {%- if page.categories.size > 0 or page.tags.size > 0 -%}
+  <div class="post-categories-tags">
+    {%- if page.categories.size > 0 -%}
+    <span>分类：
+      {%- for category in page.categories -%}
+        <a href="{{ '/categories/#' | append: category | relative_url }}">{{ category }}</a>
+      {%- endfor -%}
+    </span>
+    {%- endif -%}
+    {%- if page.tags.size > 0 -%}
+    <span>标签：
+      {%- for tag in page.tags -%}
+        <a href="{{ '/tags/#' | append: tag | relative_url }}">#{{ tag }}</a>
+      {%- endfor -%}
+    </span>
+    {%- endif -%}
+  </div>
+  {%- endif -%}
+
+  {%- comment -%}
+  上一篇/下一篇导航（后续如需启用，取消下面的注释即可）
+  
+  <div class="post-navigation">
+    {%- if page.previous -%}
+    <div class="prev">
+      <span>上一篇：</span>
+      <a href="{{ page.previous.url | relative_url }}">{{ page.previous.title }}</a>
+    </div>
+    {%- else -%}
+    <div class="prev"></div>
+    {%- endif -%}
+    {%- if page.next -%}
+    <div class="next">
+      <span>下一篇：</span>
+      <a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a>
+    </div>
+    {%- else -%}
+    <div class="next"></div>
+    {%- endif -%}
+  </div>
+  {%- endcomment -%}
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>

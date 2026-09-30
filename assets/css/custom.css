@@ -1,0 +1,193 @@
+/* ========================================
+   Sophia Yanghua头脑风暴 - 自定义样式
+   基于 minima 主题微调
+   ======================================== */
+
+/* ---------- 全局字体 ---------- */
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  line-height: 1.75;
+  color: #333;
+}
+
+/* ---------- 正文最大宽度居中 ---------- */
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ---------- 标题 ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.3;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+}
+
+h1 { font-size: 1.8rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+/* ---------- 链接 ---------- */
+a {
+  color: #4f46e5;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #3730a3;
+  text-decoration: underline;
+}
+
+/* ---------- 代码块 ---------- */
+pre {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ---------- 行内代码 ---------- */
+code {
+  background-color: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* ---------- 文章摘要 ---------- */
+.post-excerpt,
+.post-summary {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* 首页文章列表摘要 */
+.home .post-list .post-link + p {
+  color: #666;
+  font-size: 0.95rem;
+  margin-top: 0.3rem;
+}
+
+/* ---------- 文章列表分隔线 ---------- */
+.home .post-list li {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
+  list-style: none;
+}
+
+.home .post-list li:last-child {
+  border-bottom: none;
+}
+
+.home .post-list {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/* ---------- 文章日期 ---------- */
+.post-meta {
+  color: #999;
+  font-size: 0.85rem;
+}
+
+/* ---------- 引用块 ---------- */
+blockquote {
+  border-left: 4px solid #4f46e5;
+  margin: 1.5rem 0;
+  padding: 0.5rem 1rem;
+  color: #555;
+  background-color: #f9fafb;
+  border-radius: 0 4px 4px 0;
+}
+
+blockquote p {
+  margin: 0.3rem 0;
+}
+
+/* ---------- 图片 ---------- */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* ---------- 文章底部分类标签 ---------- */
+.post-categories-tags {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e5e5;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.post-categories-tags span {
+  margin-right: 1rem;
+}
+
+.post-categories-tags a {
+  margin-right: 0.3rem;
+}
+
+/* ---------- 文章标题 ---------- */
+.post-header .post-title {
+  text-align: left;
+  margin-bottom: 0.3rem;
+}
+
+.post-header .post-meta {
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- 上一篇/下一篇导航 ---------- */
+.post-navigation {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.post-navigation .prev {
+  text-align: left;
+}
+
+.post-navigation .next {
+  text-align: right;
+}
+
+/* ---------- 移动端适配 ---------- */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.3rem; }
+  h3 { font-size: 1.1rem; }
+
+  pre {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+  }
+}
