@@ -24,10 +24,9 @@ paginate_path: "/page:num/"
 # Language
 language: "zh-CN"
 
-# Author
-author:
-  name: "Sophia Yanghua"
-  email: ""
+# Author（minima 主题使用字符串格式）
+author: "Sophia Yanghua"
+author_email: "3570553727@qq.com"
 
 # Build settings
 markdown: kramdown
