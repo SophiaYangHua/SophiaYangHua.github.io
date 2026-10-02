@@ -380,7 +380,7 @@
     <div class="empty-state" id="emptyState">
       <div class="icon">💬</div>
       <h3>开始你的 AI 对话</h3>
-      <p>点击右上角 ⚙️ 设置 API 地址和 Token<br>然后在下方输入框开始聊天吧</p>
+      <p>直接在下方输入框开始聊天吧<br>点击右上角 ⚙️ 可以切换模型或设置</p>
     </div>
   </div>
 
@@ -448,39 +448,48 @@
 </div>
 
 <script>
+  // 默认配置（访客一进来就能用）
+  const DEFAULT_SETTINGS = {
+    baseUrl: 'https://api.sillytraven.dev/api/ai/v1',
+    token: 'd332d9ed-3446-486f-b9a3-2272c7dd8d11',
+    model: 'x-apex-surge-0505-16k',
+    stream: true,
+    systemPrompt: '你是一个乐于助人的AI助手，回答简洁明了，善于思考。'
+  };
+
   // State
   let messages = [];
   let isSending = false;
   let controller = null;
+  let currentSettings = { ...DEFAULT_SETTINGS };
 
-  // Load settings from localStorage
+  // 加载设置：每次刷新都用默认值，访客自己改的只在当前页面生效
   function loadSettings() {
-    const settings = JSON.parse(localStorage.getItem('chatSettings') || '{}');
-    document.getElementById('apiBaseUrl').value = settings.baseUrl || '';
-    document.getElementById('apiToken').value = settings.token || '';
-    document.getElementById('modelName').value = settings.model || '';
-    document.getElementById('streamMode').value = settings.stream !== false ? 'true' : 'false';
-    document.getElementById('systemPrompt').value = settings.systemPrompt || '';
+    currentSettings = { ...DEFAULT_SETTINGS };
+    document.getElementById('apiBaseUrl').value = currentSettings.baseUrl;
+    document.getElementById('apiToken').value = currentSettings.token;
+    document.getElementById('modelName').value = currentSettings.model;
+    document.getElementById('streamMode').value = currentSettings.stream ? 'true' : 'false';
+    document.getElementById('systemPrompt').value = currentSettings.systemPrompt;
     updateStatus();
   }
 
   function saveSettings() {
-    const settings = {
+    currentSettings = {
       baseUrl: document.getElementById('apiBaseUrl').value.trim(),
       token: document.getElementById('apiToken').value.trim(),
       model: document.getElementById('modelName').value.trim(),
       stream: document.getElementById('streamMode').value === 'true',
       systemPrompt: document.getElementById('systemPrompt').value.trim()
     };
-    localStorage.setItem('chatSettings', JSON.stringify(settings));
+    // 不存 localStorage，刷新后恢复默认
     updateStatus();
     toggleSettings();
-    // Show a brief toast
     showToast('设置已保存 ✓');
   }
 
   function getSettings() {
-    return JSON.parse(localStorage.getItem('chatSettings') || '{}');
+    return currentSettings;
   }
 
   function updateStatus() {
